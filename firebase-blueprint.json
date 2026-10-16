@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "Dream": {
+      "title": "Dream",
+      "description": "A recorded dream journal entry with subconscious insights, symbols, and generated art.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the dream owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the dream."
+        },
+        "narrative": {
+          "type": "string",
+          "description": "Transcribed or user-entered dream vision text."
+        },
+        "expandedNarrative": {
+          "type": "string",
+          "description": "Full expanded dream narrative."
+        },
+        "date": {
+          "type": "string",
+          "description": "Display date of the dream."
+        },
+        "time": {
+          "type": "string",
+          "description": "Display time of the dream recording."
+        },
+        "mood": {
+          "type": "string",
+          "description": "Emotional mood category (Wonder, Serene, Intrigue, Euphoric, Turbulent)."
+        },
+        "category": {
+          "type": "string",
+          "description": "Dream realm category (e.g. Fantasy Realm, Oceanic, Lucid Dreams, Nature)."
+        },
+        "lucidityLevel": {
+          "type": "string",
+          "description": "Level of lucidity experienced."
+        },
+        "lucidityPercent": {
+          "type": "number",
+          "description": "Percentage score of lucidity (0-100)."
+        },
+        "coherencePercent": {
+          "type": "number",
+          "description": "Percentage score of coherence (0-100)."
+        },
+        "emotionIntensityPercent": {
+          "type": "number",
+          "description": "Percentage score of emotional intensity (0-100)."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the primary celestial artwork for this dream."
+        },
+        "imageVariations": {
+          "type": "array",
+          "description": "Array of alternative celestial artwork URLs."
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags and emotional archetype labels."
+        },
+        "isFavorite": {
+          "type": "boolean",
+          "description": "Whether the dream is marked as favorite."
+        },
+        "isArchived": {
+          "type": "boolean",
+          "description": "Whether the dream has been archived."
+        },
+        "personalNotes": {
+          "type": "string",
+          "description": "User reflections and private notes."
+        },
+        "interpretation": {
+          "type": "string",
+          "description": "Psychological subconscious dream interpretation."
+        },
+        "estimatedRemTime": {
+          "type": "string",
+          "description": "Estimated duration spent in deep REM cycle."
+        },
+        "clarityScore": {
+          "type": "string",
+          "description": "Clarity index score."
+        },
+        "archetype": {
+          "type": "string",
+          "description": "Jungian archetype detected."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp. Clients must submit FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp. Clients must submit FieldValue.serverTimestamp()."
+        }
+      },
+      "required": ["userId", "title", "narrative", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/dreams/{dreamId}": {
+      "schema": {
+        "$ref": "#/entities/Dream"
+      },
+      "description": "User's personal dream journal entries."
+    }
+  }
+}

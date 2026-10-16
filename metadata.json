@@ -1,0 +1,8 @@
+{
+  "name": "Dreamscape",
+  "description": "AI dream journal, nocturnal voice capture, and celestial subconscious insights",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

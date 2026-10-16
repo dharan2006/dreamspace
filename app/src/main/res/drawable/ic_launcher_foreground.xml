@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Centered within 66dp safe zone (x: 21 to 87, y: 21 to 87, center: 54, 54) -->
+    <!-- Glowing crescent moon -->
+    <path
+        android:pathData="M59.5,29.2 C52.1,30.3 46.5,36.5 46.5,44.2 C46.5,52.8 53.5,59.8 62.1,59.8 C66.8,59.8 70.9,57.7 73.7,54.4 C72.5,64.2 64.1,71.8 54.0,71.8 C42.9,71.8 34.0,62.8 34.0,51.8 C34.0,41.4 41.9,32.9 52.0,32.0 C54.4,30.6 57.0,29.7 59.5,29.2 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="34"
+                android:startY="30"
+                android:endX="74"
+                android:endY="72"
+                android:type="linear">
+                <item android:color="#DDB7FF" android:offset="0.0" />
+                <item android:color="#B76DFF" android:offset="0.5" />
+                <item android:color="#FFB0CD" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Central celestial sparkle / star -->
+    <path
+        android:fillColor="#7BD0FF"
+        android:pathData="M65.0,38.0 L66.5,41.5 L70.0,43.0 L66.5,44.5 L65.0,48.0 L63.5,44.5 L60.0,43.0 L63.5,41.5 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48.0,40.0 L48.8,42.0 L51.0,42.8 L48.8,43.5 L48.0,45.5 L47.2,43.5 L45.0,42.8 L47.2,42.0 Z" />
+    <path
+        android:fillColor="#FFB0CD"
+        android:pathData="M68.0,55.0 L68.6,56.5 L70.0,57.0 L68.6,57.5 L68.0,59.0 L67.4,57.5 L66.0,57.0 L67.4,56.5 Z" />
+    <!-- Ethereal cloud beneath moon -->
+    <path
+        android:pathData="M42.0,66.0 C38.5,66.0 35.5,68.5 35.0,72.0 C39.0,72.0 69.0,72.0 73.0,72.0 C73.0,69.5 71.0,67.5 68.5,67.5 C67.8,67.5 67.1,67.7 66.5,68.0 C65.5,65.0 62.5,63.0 59.0,63.0 C56.5,63.0 54.2,64.0 52.8,65.8 C51.8,64.8 50.5,64.0 49.0,64.0 C46.5,64.0 44.5,65.0 42.0,66.0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="35"
+                android:startY="63"
+                android:endX="73"
+                android:endY="72"
+                android:type="linear">
+                <item android:color="#7BD0FF" android:offset="0.0" />
+                <item android:color="#DDB7FF" android:offset="0.6" />
+                <item android:color="#FFB0CD" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

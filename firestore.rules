@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidDream(data, userId) {
+      return data.userId == userId &&
+        data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+        data.narrative is string && data.narrative.size() > 0 && data.narrative.size() <= 10000 &&
+        data.createdAt is timestamp && data.createdAt <= request.time &&
+        data.updatedAt is timestamp && data.updatedAt <= request.time &&
+        (!('mood' in data) || data.mood is string) &&
+        (!('category' in data) || data.category is string) &&
+        (!('lucidityLevel' in data) || data.lucidityLevel is string) &&
+        (!('lucidityPercent' in data) || (data.lucidityPercent is number && data.lucidityPercent >= 0 && data.lucidityPercent <= 100)) &&
+        (!('coherencePercent' in data) || (data.coherencePercent is number && data.coherencePercent >= 0 && data.coherencePercent <= 100)) &&
+        (!('emotionIntensityPercent' in data) || (data.emotionIntensityPercent is number && data.emotionIntensityPercent >= 0 && data.emotionIntensityPercent <= 100)) &&
+        (!('imageUrl' in data) || data.imageUrl is string) &&
+        (!('imageVariations' in data) || data.imageVariations is list) &&
+        (!('tags' in data) || data.tags is list) &&
+        (!('isFavorite' in data) || data.isFavorite is bool) &&
+        (!('isArchived' in data) || data.isArchived is bool) &&
+        (!('personalNotes' in data) || data.personalNotes is string) &&
+        (!('interpretation' in data) || data.interpretation is string) &&
+        (!('estimatedRemTime' in data) || data.estimatedRemTime is string) &&
+        (!('clarityScore' in data) || data.clarityScore is string) &&
+        (!('archetype' in data) || data.archetype is string);
+    }
+
+    match /users/{userId}/dreams/{dreamId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidDream(incoming(), userId);
+      allow update: if isOwner(userId) &&
+        isValidDream(incoming(), userId) &&
+        incoming().userId == resource.data.userId &&
+        incoming().createdAt == resource.data.createdAt;
+      allow delete: if isOwner(userId);
+    }
+  }
+}
